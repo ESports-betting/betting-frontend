@@ -12,6 +12,11 @@ export const getBettingStatus = async () => {
   return Number(result);
 }
 
+export const getBettingName = async () => {
+  const result = await callMethod(bettingContract.contract.methods['bettingName'], []);
+  return (result);
+}
+
 export const getPotAmount = async () => {
   const result = await callMethod(bettingContract.contract.methods['pot'], []);
   const amount = new BigNumber(parseInt(result)).dividedBy(decimalBN);
@@ -22,4 +27,14 @@ export const getMinBetAmount = async () => {
   const result = await callMethod(bettingContract.contract.methods['minimumBet'], []);
   const amount = new BigNumber(parseInt(result)).dividedBy(decimalBN);
   return Number(amount);
+}
+
+export const getAvailableSeconds = async () => {
+  const result = await callMethod(bettingContract.contract.methods['avaiableSeconds'], []);
+  return Number(result);
+}
+
+export const getStartedTimeStamp = async () => {
+  const result = await callMethod(bettingContract.contract.methods['startedTimestamp'], []);
+  return result;
 }
